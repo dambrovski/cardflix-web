@@ -6,13 +6,31 @@ $curso = "";
 $rgm = "";
 $codValidador = "";
 
-$nome = $_GET['nome'];
-$curso = $_GET['curso'];
-$rgm = $_GET['rgm'];
-$codValidador = $_GET['codValidador'];
+$data = "";
+$newData = "";
+
+$data = $_GET['data'];
+
+$codValidador = $_GET['data'];
+$codValidador = md5($codValidador);
+
+
+$newData = base64_decode($data);
+
+$dataProcessed = explode("&", $newData);
+
+$nome = $dataProcessed[0];
+$nome = substr($nome, 6, strlen($nome));
+
+$curso = $dataProcessed[1];
+$curso = substr($curso, 6, strlen($curso));
+
+$rgm = $dataProcessed[2];
+$rgm = substr($rgm, 4, strlen($rgm));
 
 
 ?>
+
 <html>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
